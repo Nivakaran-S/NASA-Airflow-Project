@@ -2,24 +2,22 @@
 ## Project Overview: 
 
 This project involves creating an ETL (Extract, Transform, Load) pipeline using Apahe Airflow. The pipeline extracts data from an external API ( in this case, NASA's Astronomy Picture of the Day (APOD) API), transforms the data, and loads it into a Postgres database. The entire workflow is orchestrated by Airflow, a platform that allows scheduling, monitoring, and managing workflows.
-- 
+
 The project leverates Docker to run Airflow and Postgres as services, ensuring an isolated and reproducible enviornemtn. We also utilize Airflow hoocks and operators to handle the ETL process efficiently.
 
 ## Key Components of the Project: Airflow for Orchestration:
-- 
+
 Airflow is used to define, schedule, and monitor the entier ETL pipeline. It manages task dependencies, ensuring that the process runs sequentially and reliably. The Airflow DAG (Directed Acyclic Graph) defines the workflow, which includes tasks like data extraction, transformation, and loading. 
 
 ### Postgres Database:
-- 
+
 A PostgresSQL database is used to store the extracted and transformed data. Postgres is hosted in a Docker container, making it easy to manage and ensuring data persistence through Docker volumes. We interact with Postgres using Airflow's PostgresHook and PostgresOperator. 
 
 ### NASA API (Astronomy Picture of the Day):
-- 
 
 The external API used in this project is NASA's APOD API, which provides data about the astronomy picture of the day, including metadata like the tilte, explanation, and the URL of the image. We use Airflow's SimpleHttpOperator to extract data from the API. 
 
-### Objectives of the Project: 
-- 
+## Objectives of the Project: 
 
 ### 1. Extract Data:
 THe pipeline extracts astronomy-related data from NASA's APOD API on a scheduled basis (daily, in this case). 
