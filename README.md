@@ -30,6 +30,7 @@ The transformed data is loaded into a Postgres database. The datag can be used f
 
 ### 4. Architecture and Workflow: 
 The ETL pipeline is orchestrawted in Airflow using a DAG (Directed Acyclic Graph). The pipeline consists of the following stages:
+- 
     1. Extract(E): SimpleHttpOperator is ued to make HTTP GET requests to NASA's APOD API. The response  is in JSON format, containing fields like the title of the picture, the explanation, and the URL to the image. 
     2. Transform (T): The extracted JSON data is processed in the transform task using Airflow's TaskFlow API (with the @task decorator). This stage involves extracting relevant fields like title, explanation, url, and date and ensuring they are in the correct format for the database. 
     3. Load (L): The transformed data is    loaded into a Postgres tabble using PostgresHook. If the target table doesn't exist in the Postgres database, it is created automatically as part of the DAG using a create table task. 
